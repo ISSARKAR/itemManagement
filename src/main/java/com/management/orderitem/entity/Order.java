@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Proxy;
 
@@ -23,14 +26,24 @@ public class Order {
 	@GeneratedValue
 	@Column(name="order_id")
 	private Integer orderId;
+	
+	@NotBlank(message="Please provide a name")
+	@Size(min=1, max=30)
 	@Column(name="customer_name")
 	private String customerName;
+	
+	@FutureOrPresent
 	@Column(name="order_date")
 	private Date orderDate;
+	
+	@NotBlank(message="Please provide a Shipping Address")
+	@Size(min=1, max=100)
 	@Column(name="shipping_address")
 	private String shippingAddress;
+	
 	@Column(name="total")
 	private Double totalInDollars;
+	
 	@OneToMany
 	private List<OrderItems> orderItems;
 	
