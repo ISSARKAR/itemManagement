@@ -3,6 +3,9 @@ package com.management.orderitem.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -13,7 +16,12 @@ public class OrderItems {
 	
 	@Id
 	private String productCode;
+	
+	@NotBlank(message="Product name cannot be bank")
 	private String productName;
+	
+	@Digits(integer=100, fraction = 0)
+	@NotNull(message="Quantity cannot be null")
 	private Integer quantity;
 
 	public String getProductCode() {
