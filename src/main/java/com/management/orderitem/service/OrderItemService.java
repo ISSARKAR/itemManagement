@@ -1,14 +1,17 @@
 package com.management.orderitem.service;
 
-import org.springframework.http.ResponseEntity;
+import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import com.management.orderitem.entity.OrderItems;
 
 public interface OrderItemService {
 
-	OrderItems getOrderItemDetails(Integer productId);
+	ResponseEntity<OrderItems> getOrderItemDetails(Integer orderId,String productCode);
 
 	ResponseEntity<String> createOrderItems(OrderItems orderItem);
+
+	ResponseEntity<List<OrderItems>> getOrderItemDetails(Integer orderId);
 
 
 }
